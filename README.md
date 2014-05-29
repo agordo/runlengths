@@ -7,7 +7,7 @@ It has only been tested under linux and mac, but should work without problems un
 run demo.m to compile the mex file and compute the runlength descriptor of a sample image.
 
 Please cite [1] if you use this software in your technical work.
-If you have any questions or comments, I can currently be reached at albert.gordo@inria.fr
+If you have any questions or comments, I can currently be reached at albert.gordo.s@gmail.com
 
 [1] Large-scale document image retrieval and classification with runlength histograms and binary embeddings.
 A. Gordo, F. Perronnin, and E. Valveny.

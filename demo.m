@@ -1,5 +1,5 @@
 %% Compile the mex file
-mex -largeArrayDims -O CFLAGS="\$CFLAGS -O3 -ffast-math -std=c99" Runlength_c.c -o Runlength_c
+%mex -largeArrayDims -O CFLAGS="\$CFLAGS -O3 -ffast-math -std=c99" Runlength_c.c -o Runlength_c
 
 
 %% Read Image. Both color or grayscal are accepted

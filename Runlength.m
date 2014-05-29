@@ -1,4 +1,4 @@
-function [ desc ] = Runlength(im, pyramid, npixels)
+function [ desc ] = Runlength(im,  npixels,pyramid)
 %RUNLENGTH Summary of this function goes here
 % Computes the Runlength descriptor of an image as in [1]
 % im is a color or grayscale image
@@ -12,6 +12,10 @@ function [ desc ] = Runlength(im, pyramid, npixels)
 
 
 if nargin < 2
+    npixels=5e5;
+end
+
+if nargin < 3
     pyramid = [0,    1,     0,    1; % 1x1
               0,     0.5,   0,    0.5; %2x2
               0,     0.5,   0.5,  1;
@@ -35,9 +39,6 @@ if nargin < 2
               0.75,  1,     0.75, 1];
 end
 
-if nargin < 3
-    npixels=5e5;
-end
 
 
 [m,n,c] = size(im);
@@ -64,10 +65,11 @@ for i=1:size(pyramid, 1)
     coords([1,3]) = max(floor(coords([1,3])), [1,1]);
     coords([2,4]) = min(ceil(coords([2,4])), [n,m]);
     % Compute descriptor
-    D(:,i) = Runlength_c(im(coords(2):coords(4),coords(1):coords(3)));
+    D(:,i) = Runlength_c(im(coords(3):coords(4),coords(1):coords(2)));
 end
 % Flat and normalize
 desc = D(:);
 desc = sqrt(desc/sum(desc));
+desc(isnan(desc)) = 0;
 
 
